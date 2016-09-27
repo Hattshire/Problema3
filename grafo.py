@@ -2,6 +2,8 @@
 
 import igraph as ig
 import random
+import json
+
 
 vertices = random.randint(0,10000)
 lineas   = []
