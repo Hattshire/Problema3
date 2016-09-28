@@ -24,11 +24,11 @@ for i in range(len(data2)):
     fecha = data2[i][u'created_time'].strip().split('-')
     if (u'2015' == fecha[0]):
         if int(fecha[1]) in range(8,13):
-            data2_anno.append(data1[i])
+            data2_anno.append(data2[i])
            
     elif (u'2016' == fecha[0]):
         if int(fecha[1]) in range(1,8):
-            data2_anno.append(data1[i])
+            data2_anno.append(data2[i])
 
 posts_al_mes1 = int(round(len(data1_anno)/12.0))
 posts_al_mes2 = int(round(len(data2_anno)/12.0))
