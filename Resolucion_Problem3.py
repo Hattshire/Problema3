@@ -32,7 +32,7 @@ for i in range(len(data2)):
 posts_al_mes1 = len(data1_anno)/12.0
 posts_al_mes2 = len(data2_anno)/12.0
 
-print "Numero de posts al mes:\n    ", json1, ":", posts_al_mes1, "\n    ", json2, ":", posts_al_mes2
+print "Numero de posts al mes:\n ", json1, ":", posts_al_mes1, "[posts/mes]\n ", json2, ":", posts_al_mes2, "[posts/mes]"
 
 suma_likes1 = 0
 suma_comments1 = 0
@@ -52,7 +52,7 @@ comments_al_mes1 = suma_comments1/12.0
 likes_al_mes2 = suma_likes2/12.0
 comments_al_mes2 = suma_comments2/12.0
 
-print "\nLikes y Comments al mes:\n\n", json1, ":\n", likes_al_mes1, "[likes/mes]\n", comments_al_mes1, "[comments/mes]\n\n", json2, ":\n", likes_al_mes2, "[likes/mes]\n", comments_al_mes2, "[comments/mes]"
+print "\nLikes y Comments al mes:\n", json1, ":\n ", likes_al_mes1, "[likes/mes]\n ", comments_al_mes1, "[comments/mes]\n", json2, ":\n ", likes_al_mes2, "[likes/mes]\n ", comments_al_mes2, "[comments/mes]"
 
 persons_like1 = set()
 persons_comment1 = set()
@@ -78,4 +78,4 @@ persons2 = len(persons_like2&persons_comment2)
 persons_al_mes1 = persons1/12.0
 persons_al_mes2 = persons2/12.0
 
-print "\nPersonas que dan like y comments al mes:\n", json1, ":", persons_al_mes1, "[personas/mes]\n", json2, ":", persons_al_mes2, "[personas/mes]"
+print "\nPersonas que dan like y comments al mes:\n ", json1, ":", persons_al_mes1, "[personas/mes]\n ", json2, ":", persons_al_mes2, "[personas/mes]"
