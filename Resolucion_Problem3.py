@@ -1,3 +1,4 @@
+import igraph as ig
 from json import loads
 json1 = "MetalGearJp.json"
 json2 = "KonamiJp.json"
