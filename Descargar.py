@@ -9,9 +9,9 @@ import requests
 #ACCESS TOKEN
 at=""
 #ID DE PAGINA
-face=1574014342849506 #124224143270 HdC
+face=837294046338416 #124224143270 HdC
 #NOMBRE DE PAGINA
-fname="abcd" #hdecristo HdC
+fname="MetalGearJp" #hdecristo HdC
 
 
 link="https://graph.facebook.com/"+str(face)+"?access_token="+at+"&"
@@ -20,8 +20,8 @@ link=link+opts
 
 #print "Abriendo",link
 with requests.Session() as session:
-	session.get("https://graph.facebook.com/?access_token="+at)
-	algo = session.get(link).text
+	#session.get("https://graph.facebook.com/?access_token="+at)
+	#algo = session.get(link).text
 	#algo=urllib2.urlopen(link)
 	#print "Link listo"
 	megalin=""
