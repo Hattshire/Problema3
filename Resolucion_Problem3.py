@@ -1,0 +1,81 @@
+from json import loads
+json1 = "MetalGearJp.json"
+json2 = "KonamiJp.json"
+with open(json1) as of:
+    data1=loads(of.readline())
+with open(json2) as of:
+    data2=loads(of.readline())
+
+data1_anno = []
+data2_anno = []
+
+for i in range(len(data1)):
+    fecha = data1[i][u'created_time'].strip().split('-')
+    if (u'2015' == fecha[0]):
+        if int(fecha[1]) in range(8,13):
+            data1_anno.append(data1[i])
+           
+    elif (u'2016' == fecha[0]):
+        if int(fecha[1]) in range(1,8):
+            data1_anno.append(data1[i])
+ 
+for i in range(len(data2)):
+    fecha = data2[i][u'created_time'].strip().split('-')
+    if (u'2015' == fecha[0]):
+        if int(fecha[1]) in range(8,13):
+            data2_anno.append(data1[i])
+           
+    elif (u'2016' == fecha[0]):
+        if int(fecha[1]) in range(1,8):
+            data2_anno.append(data1[i])
+
+posts_al_mes1 = len(data1_anno)/12.0
+posts_al_mes2 = len(data2_anno)/12.0
+
+print "Numero de posts al mes:\n    ", json1, ":", posts_al_mes1, "\n    ", json2, ":", posts_al_mes2
+
+suma_likes1 = 0
+suma_comments1 = 0
+suma_likes2 = 0
+suma_comments2 = 0
+
+for j in range(len(data1_anno)):
+    suma_likes1 += int(data1_anno[j]['likes']['summary']['total_count'])
+    suma_comments1 += int(data1_anno[j]['comments']['summary']['total_count'])
+
+for b in range(len(data2_anno)):
+    suma_likes2 += int(data2_anno[b]['likes']['summary']['total_count'])
+    suma_comments2 += int(data2_anno[b]['comments']['summary']['total_count'])
+
+likes_al_mes1 = suma_likes1/12.0
+comments_al_mes1 = suma_comments1/12.0
+likes_al_mes2 = suma_likes2/12.0
+comments_al_mes2 = suma_comments2/12.0
+
+print "\nLikes y Comments al mes:\n\n", json1, ":\n", likes_al_mes1, "[likes/mes]\n", comments_al_mes1, "[comments/mes]\n\n", json2, ":\n", likes_al_mes2, "[likes/mes]\n", comments_al_mes2, "[comments/mes]"
+
+persons_like1 = set()
+persons_comment1 = set()
+persons_like2 = set()
+persons_comment2 = set()
+
+
+for k in range(len(data1_anno)):
+    for w in range(len(data1_anno[k]['likes']['data'])):
+        persons_like1.add(data1_anno[k]['likes']['data'][w]['id'])
+    for x in range(len(data1_anno[k]['comments']['data'])):
+        persons_comment1.add(data1_anno[k]['comments']['data'][x]['from']['id'])
+
+for l in range(len(data2_anno)):
+    for y in range(len(data2_anno[l]['likes']['data'])):
+        persons_like2.add(data2_anno[l]['likes']['data'][y]['id'])
+    for z in range(len(data2_anno[l]['comments']['data'])):
+        persons_comment2.add(data2_anno[l]['comments']['data'][z]['from']['id'])
+
+persons1 = len(persons_like1&persons_comment1)
+persons2 = len(persons_like2&persons_comment2)
+
+persons_al_mes1 = persons1/12.0
+persons_al_mes2 = persons2/12.0
+
+print "\nPersonas que dan like y comments al mes:\n", json1, ":", persons_al_mes1, "[personas/mes]\n", json2, ":", persons_al_mes2, "[personas/mes]"
