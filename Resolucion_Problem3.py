@@ -112,7 +112,7 @@ g.add_vertex("KonamiJp", color="pink", size=150)
 
 #Se itera sobre las ids de las personas que han puesto like
 #Esta id se mantiene en vert
-#Luego se añade el vertice usando un color cercano al turquesa 
+#Luego se anyade el vertice usando un color cercano al turquesa 
 for vert in (persons_like_mes1 | persons_like_mes2):
     g.add_vertex(vert, color="#00bbff")
 
