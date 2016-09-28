@@ -80,3 +80,36 @@ persons_al_mes1 = persons1/12.0
 persons_al_mes2 = persons2/12.0
 
 print "\nPersonas que dan like y comments al mes:\n ", json1, ":", persons_al_mes1, "[personas/mes]\n ", json2, ":", persons_al_mes2, "[personas/mes]"
+
+data1_mes = []
+data2_mes = []
+
+for i in range(len(data1)):
+    if "2016-08-" in data1[i]['created_time']:
+        data1_mes.append(data1[i])
+for i in range(len(data2)):
+    if "2016-08-" in data2[i]['created_time']:
+        data2_mes.append(data2[i])
+
+persons_like_mes1 = set()
+persons_like_mes2 = set()
+
+for k in range(len(data1_mes)):
+    for w in range(len(data1_mes[k]['likes']['data'])):
+        persons_like_mes1.add(data1_mes[k]['likes']['data'][w]['name'])
+for l in range(len(data2_mes)):
+    for y in range(len(data2_mes[l]['likes']['data'])):
+        persons_like_mes2.add(data2_mes[l]['likes']['data'][y]['name'])
+
+g = ig.Graph()
+
+for vert1 in (persons_like_mes1 | persons_like_mes2):
+    g.add_vertex(vert1)
+
+for vert1 in (persons_like_mes1 | persons_like_mes2):
+    if vert1 in (persons_like_mes1 & persons_like_mes2):
+        for vert2 in (persons_like_mes1 & persons_like_mes2):
+            if vert1 != vert2:
+                g.add_edge(vert1,vert2)
+        
+ig.plot(g)
