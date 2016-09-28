@@ -1,3 +1,7 @@
+#Julian Sepulveda
+#Sebastian Landero
+#Gustavo Valladares
+
 import igraph as ig
 from json import loads
 json1 = "MetalGearJp.json"
