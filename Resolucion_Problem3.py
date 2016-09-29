@@ -107,14 +107,14 @@ for l in range(len(data2_mes)):
 
 g = ig.Graph()
 
-g.add_vertex("MetalGearJp", color="black", size=100)
-g.add_vertex("KonamiJp", color="pink", size=150)
+g.add_vertex("MetalGearJp", color="#000", size=150)
+g.add_vertex("KonamiJp", color="#FFFFFF", size=150)
 
 #Se itera sobre las ids de las personas que han puesto like
 #Esta id se mantiene en vert
 #Luego se anyade el vertice usando un color cercano al turquesa 
 for vert in (persons_like_mes1 | persons_like_mes2):
-    g.add_vertex(vert, color="#00bbff")
+    g.add_vertex(vert, color="#00bbff" size=10)
 
 #Se itera sobre las ids de las personas que les gusta la pagina 1
 #Se almacena en vert i se añade una linea o arista entre la bola
@@ -128,5 +128,5 @@ for vert in (persons_like_mes1):
 for vert in (persons_like_mes2):
     g.add_edge(vert,"KonamiJp")
 #Se genera una imagen del grafico a un tamaño personalizado y de fondo color plomo     
-ig.plot(g, bbox=(1920,1080), background="#171717")
+ig.plot(g, bbox=(1920,1080), background="#171717", layout='lgl')
 
